@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='nn_visualizer',
+    name='unique_nn_visualizer',  # Ensure this is a unique name
     version='0.1',
     packages=find_packages(),
     install_requires=[
         'torch',
-        'matplotlib',
-        # Add other dependencies here
+        'matplotlib'
     ],
+    # Other arguments
 )

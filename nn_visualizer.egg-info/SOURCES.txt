@@ -1,9 +1,0 @@
-README.md
-setup.py
-nn_visualizer/__init__.py
-nn_visualizer/visualizer.py
-nn_visualizer.egg-info/PKG-INFO
-nn_visualizer.egg-info/SOURCES.txt
-nn_visualizer.egg-info/dependency_links.txt
-nn_visualizer.egg-info/requires.txt
-nn_visualizer.egg-info/top_level.txt
