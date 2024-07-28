@@ -1,2 +1,2 @@
 # nn_visualizer
-This is for nerual network visualization
+This is for neural network visualization
