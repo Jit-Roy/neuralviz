@@ -4,17 +4,16 @@ import torch
 from IPython.display import display, clear_output
 
 class NNVisualizer:
-    def __init__(self, model, data, targets):
+    def __init__(self, model, data):
         self.model = model
-        self.data = data
-        self.targets = targets
+        self.X, self.y = data
         self.figure, self.ax = plt.subplots(figsize=(8, 8))
         self.ax.set_title('Decision Boundary Evolution')
         self.xx, self.yy = self.create_meshgrid()
 
     def create_meshgrid(self):
-        x_min, x_max = self.data[:, 0].min() - 1, self.data[:, 0].max() + 1
-        y_min, y_max = self.data[:, 1].min() - 1, self.data[:, 1].max() + 1
+        x_min, x_max = self.X[:, 0].min() - 1, self.X[:, 0].max() + 1
+        y_min, y_max = self.X[:, 1].min() - 1, self.X[:, 1].max() + 1
         xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.02),
                              np.arange(y_min, y_max, 0.02))
         return xx, yy
@@ -29,7 +28,7 @@ class NNVisualizer:
         self.ax.contourf(self.xx, self.yy, Z, alpha=0.8, cmap='RdYlBu')
         
         # Plot data points
-        self.ax.scatter(self.data[:, 0].numpy(), self.data[:, 1].numpy(), c=self.targets.squeeze().numpy(), cmap='coolwarm', edgecolor='k', s=20)
+        self.ax.scatter(self.X[:, 0].numpy(), self.X[:, 1].numpy(), c=self.y.squeeze().numpy(), cmap='coolwarm', edgecolor='k', s=20)
         
         # Set plot limits to ensure all data points are visible
         self.ax.set_xlim(self.xx.min(), self.xx.max())
