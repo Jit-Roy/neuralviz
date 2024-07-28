@@ -29,12 +29,17 @@ class NNVisualizer:
         
         # Plot data points
         data, targets = next(iter(self.data_loader))
-        self.ax.scatter(data[:, 0], data[:, 1], c=targets.squeeze(), cmap='coolwarm', edgecolor='k', s=20)
-
+        self.ax.scatter(data[:, 0].numpy(), data[:, 1].numpy(), c=targets.squeeze().numpy(), cmap='coolwarm', edgecolor='k', s=20)
+        
+        # Set plot limits to ensure all data points are visible
         self.ax.set_xlim(self.xx.min(), self.xx.max())
         self.ax.set_ylim(self.yy.min(), self.yy.max())
+        
+        # Add labels and title
+        self.ax.set_xlabel('Feature 1')
+        self.ax.set_ylabel('Feature 2')
         self.ax.set_title(f'Epoch: {epoch+1}, Loss: {loss:.4f}')
-
+        
         # Update the plot
         clear_output(wait=True)
         display(self.figure)
