@@ -1,12 +1,22 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='unique_nn_visualizer',  # Ensure this is a unique name
-    version='0.4',
-    packages=find_packages(),
+    name='neuralviz',
+    version='0.6.0',
+    description='A package for visualizing neural network training and decision boundaries.',
+    author='Jit Roy',
+    author_email='jitroy0506@gmial.com',
+    packages=find_packages(include=['neuralviz', 'neuralviz.*']),
     install_requires=[
+        'matplotlib',
+        'numpy',
         'torch',
-        'matplotlib'
+        'seaborn',
+        'scikit-learn'
     ],
-    # Other arguments
+    python_requires='>=3.6',
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'Operating System :: OS Independent',
+    ],
 )

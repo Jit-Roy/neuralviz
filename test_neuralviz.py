@@ -4,7 +4,7 @@ import torch.optim as optim
 import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader, TensorDataset
-from nn_visualizer import NNVisualizer  # Import your custom module
+from neuralviz import NNVisualizer  # Import your custom module
 
 # Define a simple neural network
 class SimpleNN(nn.Module):

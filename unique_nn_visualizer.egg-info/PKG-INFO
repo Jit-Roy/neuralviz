@@ -1,5 +1,0 @@
-Metadata-Version: 2.1
-Name: unique_nn_visualizer
-Version: 0.4
-Requires-Dist: torch
-Requires-Dist: matplotlib
