@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import copy
 
-class NeuralNetworkVisualizer:
+class NNVisualizer:
     def __init__(self, model=None, activation_functions=None, layer_sizes=None, criterion=None, optimizer=None, figsize=(10, 8)):
         self.model = model
         self.activation_functions = activation_functions

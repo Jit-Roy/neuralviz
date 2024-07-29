@@ -5,51 +5,29 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader, TensorDataset
 from neuralviz import NNVisualizer  # Import your custom module
+from sklearn.datasets import make_moons
 
-# Define a simple neural network
-class SimpleNN(nn.Module):
-    def __init__(self):
-        super(SimpleNN, self).__init__()
-        self.fc1 = nn.Linear(2, 10)
-        self.fc2 = nn.Linear(10, 1)
-        
-    def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = torch.sigmoid(self.fc2(x))
-        return x
+# Generate a sample dataset
+X, y = make_moons(n_samples=1000, noise=0.2, random_state=42)
+X = torch.FloatTensor(X)
+y = torch.FloatTensor(y).view(-1, 1)
 
-# Create synthetic data
-def create_data():
-    n_samples = 1000
-    np.random.seed(0)
-    X = np.random.randn(n_samples, 2)
-    y = (np.sin(X[:, 0]) * np.cos(X[:, 1]) > 0).astype(float)
-    return torch.FloatTensor(X), torch.FloatTensor(y).unsqueeze(1)
+# Create and train the model
+visualizer = NNVisualizer(
+    layer_sizes=[2, 10, 10, 1],
+    activation_functions=['ReLU', 'ReLU']
+)
+visualizer.train(X, y, epochs=200, lr=0.01, batch_size=32)
 
-# Prepare data loader
-X, y = create_data()
-dataset = TensorDataset(X, y)
-data_loader = DataLoader(dataset, batch_size=32, shuffle=True)
+# Visualize feature importance
+visualizer.visualize_feature_importance()
 
-# Instantiate the model
-model = SimpleNN()
+# Visualize contribution of a specific neuron
+visualizer.visualize_neuron_contribution(X, y, layer_index=0, neuron_index=5)
 
-# Instantiate the visualizer
-visualizer = NNVisualizer(model, data_loader)
+# Visualize contributions of all neurons in the first hidden layer
+visualizer.visualize_layer_contributions(X, y, layer_index=0)
 
-# Training loop
-num_epochs = 20
-optimizer = optim.Adam(model.parameters(), lr=0.01)
-criterion = nn.BCELoss()
-
-for epoch in range(num_epochs):
-    model.train()
-    for batch_X, batch_y in data_loader:
-        optimizer.zero_grad()
-        outputs = model(batch_X)
-        loss = criterion(outputs, batch_y)
-        loss.backward()
-        optimizer.step()
-    
-    # Plot decision boundary using the visualizer
-    visualizer.plot_decision_boundary(epoch, loss.item())
+# Save and load the model
+visualizer.save_model('my_model.pth')
+visualizer.load_model('my_model.pth')
