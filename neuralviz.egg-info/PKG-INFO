@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: neuralviz
-Version: 0.6.1
+Version: 0.0.1
 Summary: A package for visualizing neural network training and decision boundaries.
 Author: Jit Roy
 Author-email: jitroy0506@gmial.com

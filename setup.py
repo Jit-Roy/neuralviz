@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='neuralviz',
-    version='0.6.1',
+    version='0.0.1',
     description='A package for visualizing neural network training and decision boundaries.',
     author='Jit Roy',
     author_email='jitroy0506@gmial.com',
