@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: neuralviz
+Version: 0.0.2
+Summary: A package for visualizing neural network training and decision boundaries.
+Author: Jit Roy
+Author-email: jitroy0506@gmial.com
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: torch
+Requires-Dist: seaborn
+Requires-Dist: scikit-learn
