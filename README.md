@@ -1,2 +1,2 @@
-# nn_visualizer
+# neuralviz
 This is for neural network visualization
